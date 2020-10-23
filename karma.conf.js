@@ -35,7 +35,8 @@ module.exports = function(config) {
 			'test/test.js'
 		],
 		preprocessors: {
-			'src/*.js': ['coverage'],
+			// note, the final coverage will be for the files in the /src/ directory, but the preprocessor works off of the files in /dist/
+			'dist/*.js': ['sourcemap','coverage'],
 		},
 		coverageReporter: {
 			reporters:[
@@ -46,8 +47,7 @@ module.exports = function(config) {
 		},
 		customLaunchers: customLaunchers,
 		reporters: reporters,
-		//logLevel: config.LOG_INFO,
-		logLevel: config.LOG_DEBUG,
+		logLevel: config.LOG_INFO,
 		browsers: browsers,
 		singleRun: true
 	});
